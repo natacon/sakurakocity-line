@@ -57,7 +57,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    if any(s in message for s in ('さく', 'こちまん')):
+    if any(s in message for s in ('さく', 'こちまん', 'らこす')):
         message = 'なんだ？'
     elif 'お手' in message:
         message = random.choice([
