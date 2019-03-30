@@ -1,7 +1,7 @@
 import os
 import sys
 
-from flask import Flask, request, abort
+from flask import Flask, request
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -39,25 +39,20 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
+    print(str(body))
     app.logger.info("Request body: " + body)
 
     # handle webhook body
     try:
         handler.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
+    except InvalidSignatureError as e:
+        print(str(e))
 
     return 'OK'
 
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = event.message.text
-    # if 'さく' in message:
-    #     line_bot_api.reply_message(
-    #         event.reply_token,
-    #         TextSendMessage(text='なんだ？'))
-    # else:
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
