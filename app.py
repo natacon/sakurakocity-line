@@ -57,7 +57,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    if 'さく' in message:
+    if all((s in message) for s in ['さく', 'こちまん']):
         message = 'なんだ？'
     elif 'お手' in message:
         message = random.choice([
@@ -77,7 +77,7 @@ def handle_message(event):
         message = couple_count(message)
     elif '結婚して' in message:
         message = marriage_count(message)
-    elif '何日目？' in message:
+    elif '何日目' in message:
         message = day_count(message)
     else:
         message = ''
