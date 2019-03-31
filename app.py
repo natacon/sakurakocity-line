@@ -69,7 +69,7 @@ def handle_message(event):
     if any(s in message for s in ('ん～', 'ん〜')):
         message = 'ましゃーーー！'
         send_message(event.reply_token, message)
-    if any(s in message for s in ('うんこ', 'しっこ', 'しこまき')):
+    if any(s in message for s in ('うんこ', 'しっこ', 'しこ')):
         message = random.choice([
             'うんこゎたしてぃ！',
             'しっこゎたしてぃ！',
