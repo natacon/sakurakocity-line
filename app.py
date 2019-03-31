@@ -57,9 +57,16 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message = event.message.text
-    if any(s in message for s in ('さく', 'こちまん', 'らこす', 'ささ', 'さぴ')):
-        message = 'なんだ？'
-    elif 'お手' in message:
+    if any(s in message for s in ('さく', 'こちまん', 'らこす')):
+        message = random.choice([
+            'なんだ？',
+            '呼んだか？',
+        ])
+        send_message(event.reply_token, message)
+    if any(s in message for s in ('まな', 'まき')):
+        message = 'まきちゎ！'
+        send_message(event.reply_token, message)
+    if 'お手' in message:
         message = random.choice([
             'ん？',
             'ぽむむ〜？',
@@ -69,23 +76,26 @@ def handle_message(event):
             '立てだぞ',
             'もっと立てだぞ'
         ])
-    elif '何の日' in message:
+        send_message(event.reply_token, message)
+    if '何の日' in message:
         message = what_day(message)
-    elif '記念日を教えて' in message:
+        send_message(event.reply_token, message)
+    if '記念日を教えて' in message:
         message = anniversary(message)
-    elif '付き合って' in message:
+        send_message(event.reply_token, message)
+    if '付き合って' in message:
         message = couple_count(message)
-    elif '結婚して' in message:
+        send_message(event.reply_token, message)
+    if '結婚して' in message:
         message = marriage_count(message)
-    elif '何日目' in message:
+        send_message(event.reply_token, message)
+    if '何日目カウント' in message:
         message = day_count(message)
-    else:
-        message = ''
+        send_message(event.reply_token, message)
 
-    if message != '':
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=message))
+
+def send_message(reply_token, message):
+    line_bot_api.reply_message(reply_token, TextSendMessage(text=message))
 
 user_dict = {'yukinowacity': 'ゆきちゎ', 'makinowacity': 'まきちゎ'}
 day_dict = {
