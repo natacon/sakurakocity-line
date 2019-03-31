@@ -60,11 +60,21 @@ def handle_message(event):
     if any(s in message for s in ('さく', 'こちまん', 'らこす', 'ささ', 'さぴ')):
         message = random.choice([
             'なんだ？',
-            '呼んだか？',
+            'よんだ？',
         ])
         send_message(event.reply_token, message)
-    if any(s in message for s in ('まな', 'まき')):
+    if any(s in message for s in ('まな', 'まき', 'ちゎ', 'ちわ')):
         message = 'まきちゎ！'
+        send_message(event.reply_token, message)
+    if any(s in message for s in ('ん～', 'ん〜')):
+        message = 'ましゃーーー！'
+        send_message(event.reply_token, message)
+    if any(s in message for s in ('うんこ', 'しっこ', 'しこまき')):
+        message = random.choice([
+            'うんこゎたしてぃ！',
+            'しっこゎたしてぃ！',
+            'しこぉ',
+        ])
         send_message(event.reply_token, message)
     if 'お手' in message:
         message = random.choice([
