@@ -66,6 +66,9 @@ def handle_message(event):
     if any(s in message for s in ('まな', 'まき', 'ちゎ', 'ちわ')):
         message = 'まきちゎ！'
         send_message(event.reply_token, message)
+    if any(s in message for s in ('ゆき', 'もじゃ')):
+        message = 'ゆきちゎ！'
+        send_message(event.reply_token, message)
     if any(s in message for s in ('ん～', 'ん〜')):
         message = 'ましゃーーー！'
         send_message(event.reply_token, message)
