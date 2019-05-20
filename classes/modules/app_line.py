@@ -76,11 +76,11 @@ def get_message(text):
         return message_util.day_count(text)
     if 'ワートリ交換' in text:
         search_results = tweepy_api.search('(交換 OR 缶) (ワートリ OR ワールドトリガー)')
-        s = 'こんなかんじだぞ\n\r'
+        s = 'こんなかんじだぞ'
         for result in search_results:
-            s += result.id + '\n\r'
-            s += result.user.name + '\n\r'
-            s += result.text + '\n\r'
-            s += result.created_at + '\n\r'
-            s += '-\n\r'
+            s += '\n\r\n\r' + str(result.id)
+            s += '\n\r' + result.user.name
+            s += '\n\r' + result.text
+            s += '\n\r' + str(result.created_at)
+            s += '\n\r---'
         return s
