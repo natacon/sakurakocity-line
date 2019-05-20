@@ -78,9 +78,9 @@ def get_message(text):
         search_results = tweepy_api.search('(交換 OR 缶) (ワートリ OR ワールドトリガー)')
         s = 'こんなかんじだぞ'
         for result in search_results:
-            s += '\n\r\n\r' + str(result.id)
-            s += '\n\r' + result.user.name
-            s += '\n\r' + result.text
-            s += '\n\r' + str(result.created_at)
-            s += '\n\r---'
+            s += '\n\n' + str(result.id)
+            s += '\n' + result.user.name
+            s += '\n' + result.text
+            s += '\n' + str(result.created_at)
+            s += '\n---'
         return s
