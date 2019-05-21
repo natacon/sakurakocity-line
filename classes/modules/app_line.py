@@ -31,8 +31,7 @@ handler = WebhookHandler(channel_secret)
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     messages = get_message(event.message.text)
-    for m in messages:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=m))
+    line_bot_api.reply_message(event.reply_token, messages)
 
 
 def send_message(reply_token, message):
