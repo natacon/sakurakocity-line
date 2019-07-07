@@ -48,8 +48,11 @@ def anniversary(message):
 
 def what_day(message):
     today = datetime.date.today()
-    if today.month == 3 and today.day == 7:
-        return '記念日だぞ'
+    if today.day == 7:
+        if today.month == 3:
+            return '付き合った日と結婚記念日だぞ'
+        else:
+            return '記念日だぞ'
     if today.month == 10 and today.day == 10:
         return 'プロポーズの日だぞ'
     if today.month == 2 and today.day == 4:
