@@ -47,14 +47,6 @@ def get_message(text):
         ])]
     if any(s in text for s in ('まな', 'まき', 'ちゎ', 'ちわ')):
         return ['まきちゎ！']
-    if any(s in text for s in ('ん～', 'ん〜')):
-        return ['ましゃーーー！']
-    if any(s in text for s in ('うんこ', 'しっこ', 'しこ')):
-        return [random.choice([
-            'うんこゎたしてぃ！',
-            'しっこゎたしてぃ！',
-            'しこぉ',
-        ])]
     if 'お手' in text:
         return [random.choice([
             'ん？',
